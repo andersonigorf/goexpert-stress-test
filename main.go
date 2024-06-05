@@ -82,8 +82,7 @@ func doSingleRequest(i int, url *string, wg *sync.WaitGroup, lock *sync.Mutex, s
 
 func makeRequest(i int, url *string) int {
 	var client = &http.Client{
-		Timeout:       3 * time.Second,
-		CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse },
+		Timeout: 3 * time.Second,
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		},
